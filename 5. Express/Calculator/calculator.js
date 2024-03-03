@@ -1,8 +1,11 @@
 import express from "express";
-import { urlencoded } from "body-parser";
+import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-app.use(urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/index.html");
 });
