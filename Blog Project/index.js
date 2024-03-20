@@ -32,17 +32,13 @@ app.get("/showBlog/:id", (req, res) => {
   res.render("show.ejs", { blog });
 });
 
-app.get("/updateBlog", (req, res) => {
-    res.render("update.ejs");
-});
-
 app.get("/blog/:id/edit", (req, res) => {
   const id = parseInt(req.params.id);
   const blog = all_blogs.find((blog) => blog.id === id);
   res.render("edit.ejs", { blog });
 });
 
-// Update a blog
+// update blog
 app.put("/updateBlog/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const { title, content } = req.body;
@@ -51,10 +47,7 @@ app.put("/updateBlog/:id", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/deleteBlog", (req, res) => {
-  res.render("delete.ejs");
-});
-
+// delete blog
 app.delete("/deleteBlog/:id", (req, res) => {
   const id = parseInt(req.params.id);
   all_blogs = all_blogs.filter((blog) => blog.id !== id);
